@@ -1,0 +1,80 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-cat-primary: #FF6B6B;
+    --color-cat-secondary: #4ECDC4;
+    --color-cat-accent: #FFE66D;
+    --color-cat-background: #1a1a1a;
+    --color-cat-surface: #2d2d2d;
+    --color-cat-text: #ffffff;
+    --color-cat-text-secondary: #a0a0a0;
+  }
+
+  body {
+    @apply min-h-screen;
+    background-color: var(--color-cat-background);
+    color: var(--color-cat-text);
+    margin: 0;
+    padding: 0;
+  }
+
+  #root {
+    @apply min-h-screen;
+  }
+}
+
+@layer components {
+  .chat-container {
+    @apply max-w-4xl mx-auto p-4;
+  }
+  
+  .chat-message {
+    @apply p-4 rounded-lg relative backdrop-blur-sm;
+    background-color: color-mix(in srgb, var(--color-cat-surface) 80%, transparent);
+  }
+  
+  .user-message {
+    background-color: color-mix(in srgb, var(--color-cat-primary) 20%, transparent);
+    color: var(--color-cat-text);
+    @apply shadow-lg;
+  }
+  
+  .cat-message {
+    background-color: color-mix(in srgb, var(--color-cat-surface) 80%, transparent);
+    color: var(--color-cat-text);
+    @apply shadow-lg;
+  }
+  
+  .input-container {
+    background-color: color-mix(in srgb, var(--color-cat-surface) 50%, transparent);
+    @apply fixed bottom-0 left-0 right-0 p-4 backdrop-blur-lg;
+  }
+  
+  .chat-input {
+    background-color: color-mix(in srgb, var(--color-cat-surface) 50%, transparent);
+    color: var(--color-cat-text);
+    @apply w-full p-3 rounded-full border-2;
+    border-color: var(--color-cat-primary);
+  }
+
+  .chat-input:focus {
+    outline: none;
+    border-color: var(--color-cat-accent);
+  }
+
+  .chat-input::placeholder {
+    color: var(--color-cat-text-secondary);
+  }
+
+  .typing-indicator {
+    @apply flex items-center gap-1;
+  }
+
+  .typing-dot {
+    background-color: var(--color-cat-primary);
+    @apply w-2 h-2 rounded-full;
+  }
+}
