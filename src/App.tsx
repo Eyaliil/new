@@ -1,16 +1,41 @@
 import React from 'react'
 import ChatInterface from './components/ChatInterface'
+import SimpleCatMascot from './components/SimpleCatMascot'
+import CatPersonalityDisplay from './components/CatPersonalityDisplay'
+import { defaultCatPersonality } from './types/CatPersonality'
 
 function App() {
   return (
-    <div className="min-h-screen bg-cat-background">
-      <header className="bg-cat-primary text-white p-4 text-center">
-        <h1 className="text-2xl font-bold">Ask Cat 🐱</h1>
-        <p className="text-sm">Your friendly feline encyclopedia</p>
-      </header>
-      <main>
-        <ChatInterface />
-      </main>
+    <div className="h-screen overflow-hidden" style={{ backgroundColor: 'var(--color-cat-background)', color: 'var(--color-cat-text)' }}>
+      <div className="h-full max-w-4xl mx-auto px-4 py-4 relative">
+        <header className="text-center mb-2">
+          <h1 className="text-3xl font-bold mb-1" style={{
+            background: 'linear-gradient(to right, var(--color-cat-primary), var(--color-cat-secondary))',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent'
+          }}>
+            Ask Cat
+          </h1>
+        </header>
+
+        {/* Cat mascot container - fixed in center */}
+        <div className="absolute top-[30%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10">
+          <SimpleCatMascot size={200} />
+        </div>
+
+        {/* Personality display - top right */}
+        <div className="absolute top-4 right-4 w-64">
+          <CatPersonalityDisplay personality={defaultCatPersonality} />
+        </div>
+
+        {/* Main content */}
+        <main className="relative h-full">
+          <div className="absolute inset-0 rounded-3xl blur-3xl -z-10" style={{
+            background: 'linear-gradient(to bottom, rgba(255, 107, 107, 0.1), rgba(78, 205, 196, 0.1))'
+          }} />
+          <ChatInterface />
+        </main>
+      </div>
     </div>
   )
 }

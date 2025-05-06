@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { PaperAirplaneIcon } from '@heroicons/react/24/solid';
-import CatAvatar from './CatAvatar';
+import { getPersonalityResponse, defaultCatPersonality } from '../types/CatPersonality';
 
 interface Message {
   id: number;
@@ -13,7 +13,7 @@ export default function ChatInterface() {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: 1,
-      text: "Meow! I'm your friendly cat encyclopedia. What would you like to know about cats? 😺",
+      text: `${getPersonalityResponse("hello")} I'm ${defaultCatPersonality.name}, your friendly feline encyclopedia. What would you like to know about cats?`,
       isUser: false,
     },
   ]);
@@ -36,16 +36,16 @@ export default function ChatInterface() {
     // Show typing indicator
     setIsTyping(true);
 
-    // Simulate cat response (we'll replace this with actual API calls later)
+    // Simulate cat response with personality
     setTimeout(() => {
       const catResponse: Message = {
         id: messages.length + 2,
-        text: "Meow! That's an interesting question. Let me think about it... 🐱",
+        text: getPersonalityResponse(input),
         isUser: false,
       };
       setMessages(prev => [...prev, catResponse]);
       setIsTyping(false);
-    }, 2000);
+    }, 1500);
   };
 
   return (
@@ -60,8 +60,7 @@ export default function ChatInterface() {
               exit={{ opacity: 0, y: -20 }}
               className={`chat-message ${message.isUser ? 'user-message' : 'cat-message'}`}
             >
-              {!message.isUser && <CatAvatar isTyping={false} />}
-              {message.text}
+              <p className="text-sm leading-relaxed">{message.text}</p>
             </motion.div>
           ))}
         </AnimatePresence>
@@ -72,7 +71,7 @@ export default function ChatInterface() {
             exit={{ opacity: 0 }}
             className="chat-message cat-message"
           >
-            <CatAvatar isTyping={true} />
+            <p className="text-sm leading-relaxed">Typing...</p>
           </motion.div>
         )}
       </div>

@@ -1,6 +1,6 @@
 import React from 'react'
 import ChatInterface from './components/ChatInterface'
-import CatMascot from './components/CatMascot'
+import RiveCatMascot from './components/RiveCatMascot'
 
 function App() {
   return (
@@ -18,7 +18,7 @@ function App() {
 
         {/* Cat mascot container - fixed in center */}
         <div className="absolute top-[30%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10">
-          <CatMascot />
+          <RiveCatMascot width={300} height={300} />
         </div>
 
         {/* Main content */}
