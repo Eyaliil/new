@@ -1,4 +1,3 @@
-import React from 'react'
 import ChatInterface from './components/ChatInterface'
 import SimpleCatMascot from './components/SimpleCatMascot'
 import CatPersonalityDisplay from './components/CatPersonalityDisplay'
