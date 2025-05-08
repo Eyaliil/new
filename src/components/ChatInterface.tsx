@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { PaperAirplaneIcon } from '@heroicons/react/24/solid';
-import { getPersonalityResponse, defaultCatPersonality } from '../types/CatPersonality';
 
 interface Message {
   id: number;
@@ -13,7 +12,7 @@ export default function ChatInterface() {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: 1,
-      text: `${getPersonalityResponse("hello")} I'm ${defaultCatPersonality.name}, your friendly feline encyclopedia. What would you like to know about cats?`,
+      text: "Hello! I'm your friendly feline encyclopedia. What would you like to know about cats?",
       isUser: false,
     },
   ]);
@@ -36,11 +35,11 @@ export default function ChatInterface() {
     // Show typing indicator
     setIsTyping(true);
 
-    // Simulate cat response with personality
+    // Simulate cat response
     setTimeout(() => {
       const catResponse: Message = {
         id: messages.length + 2,
-        text: getPersonalityResponse(input),
+        text: "Meow! That's an interesting question about cats. Let me think about it...",
         isUser: false,
       };
       setMessages(prev => [...prev, catResponse]);

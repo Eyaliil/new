@@ -1,7 +1,5 @@
 import ChatInterface from './components/ChatInterface'
 import SimpleCatMascot from './components/SimpleCatMascot'
-import CatPersonalityDisplay from './components/CatPersonalityDisplay'
-import { defaultCatPersonality } from './types/CatPersonality'
 
 function App() {
   return (
@@ -20,11 +18,6 @@ function App() {
         {/* Cat mascot container - fixed in center */}
         <div className="absolute top-[30%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10">
           <SimpleCatMascot size={200} />
-        </div>
-
-        {/* Personality display - top right */}
-        <div className="absolute top-4 right-4 w-64">
-          <CatPersonalityDisplay personality={defaultCatPersonality} />
         </div>
 
         {/* Main content */}
